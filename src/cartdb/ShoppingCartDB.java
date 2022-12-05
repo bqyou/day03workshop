@@ -18,7 +18,8 @@ public class ShoppingCartDB {
     public static final String SAVE = "save";
     public static final String USERS = "users";
     public static final String LIST = "list";
-    public static final List<String> VALIDCOMMANDS = Arrays.asList(LOGIN, ADD, SAVE, USERS, LIST);
+    public static final String EXIT = "exit";
+    public static final List<String> VALIDCOMMANDS = Arrays.asList(LOGIN, ADD, SAVE, USERS, LIST, EXIT);
     private ShoppingCartMemory db;
     private String currentUser;
     private String folderName;
@@ -130,8 +131,8 @@ public class ShoppingCartDB {
 
     public void addItems(String[] items) {
         for (String i : items) {
-            this.db.cartDb.get(this.currentUser).add(i);
-            System.out.printf("%s added to cart\n", i);
+            this.db.cartDb.get(this.currentUser).add(i.trim());
+            System.out.printf("%s added to cart\n", i.trim());
         }
     }
 
